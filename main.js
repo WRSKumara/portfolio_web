@@ -81,6 +81,42 @@ function setupTypingAnimation() {
     });
 }
 
+// Add mouse-over animation for My Skills section cards
+function setupSkillsMouseover() {
+    const skillCards = document.querySelectorAll('.skill-category'); // Target skill cards
+
+    skillCards.forEach(card => {
+        card.addEventListener('mouseover', () => {
+            card.style.transform = 'scale(1.05)'; // Slightly enlarge the card
+            card.style.boxShadow = '0 10px 25px rgba(14, 255, 241, 0.3)'; // Add a glowing shadow
+            card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'; // Smooth transition
+        });
+
+        card.addEventListener('mouseout', () => {
+            card.style.transform = 'scale(1)'; // Reset to original size
+            card.style.boxShadow = 'none'; // Remove the shadow
+        });
+    });
+}
+
+// Add mouse-over animation for Education Section
+function setupEducationMouseover() {
+    const educationItems = document.querySelectorAll('.education-item'); // Target education items
+
+    educationItems.forEach(item => {
+        item.addEventListener('mouseover', () => {
+            item.style.transform = 'scale(1.05)'; // Slightly enlarge the item
+            item.style.boxShadow = '0 10px 25px rgba(14, 255, 241, 0.3)'; // Add a glowing shadow
+            item.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'; // Smooth transition
+        });
+
+        item.addEventListener('mouseout', () => {
+            item.style.transform = 'scale(1)'; // Reset to original size
+            item.style.boxShadow = 'none'; // Remove the shadow
+        });
+    });
+}
+
 // Minimize Header on Scroll
 document.addEventListener('scroll', function () {
     const header = document.querySelector('header');
@@ -117,4 +153,54 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSkillBars();
     setupScrollReveal();
     setupTypingAnimation();
+    setupSkillsMouseover(); // Add mouse-over animation for skills
+    setupEducationMouseover(); // Add mouse-over animation for education section
+
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(form);
+
+        // Submit to the first action (FormSubmit.co)
+        fetch('https://formsubmit.co/db8c9156adcb66c69b276febb23b1b65', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to submit to FormSubmit.co');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log('Submitted to FormSubmit.co:', data);
+            })
+            .catch(error => {
+                console.error('Error submitting to FormSubmit.co:', error);
+            });
+
+        // Submit to the second action (form.php)
+        fetch('form.php', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to submit to form.php');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log('Submitted to form.php:', data);
+                alert('Your message has been sent successfully!');
+            })
+            .catch(error => {
+                console.error('Error submitting to form.php:', error);
+            });
+
+        // Optionally reset the form after submission
+        form.reset();
+    });
 });
