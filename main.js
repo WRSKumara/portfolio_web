@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     educationCards.forEach(card => {
         card.addEventListener("mouseenter", () => {
-            card.style.transform = "scale(1.05)";
+            card.style.transform = "scale(1.052)";
             card.style.boxShadow = "0 10px 25px rgba(14, 255, 241, 0.5)";
         });
 
@@ -186,13 +186,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             else if (progressClass.includes('reactjs')) bar.style.width = '85%';
                             else if (progressClass.includes('nodejs')) bar.style.width = '80%';
                             else if (progressClass.includes('laravel')) bar.style.width = '70%';
-                            else if (progressClass.includes('bootstrap')) bar.style.width = '80%';
+                            else if (progressClass.includes('bootstrap')) bar.style.width = '60%';
                             else if (progressClass.includes('expressjs')) bar.style.width = '75%';
                             // Professional Skills
-                            else if (progressClass.includes('problem-solving')) bar.style.width = '70%';
-                            else if (progressClass.includes('communication')) bar.style.width = '85%';
-                            else if (progressClass.includes('leadership')) bar.style.width = '85%';
-                            else if (progressClass.includes('project-management')) bar.style.width = '80%';
+                            else if (progressClass.includes('problem-solving')) bar.style.width = '60%';
+                            else if (progressClass.includes('communication')) bar.style.width = '65%';
+                            else if (progressClass.includes('leadership')) bar.style.width = '60%';
+                            else if (progressClass.includes('project-management')) bar.style.width = '70%';
                             else if (progressClass.includes('time-management')) bar.style.width = '85%';
                             else bar.style.width = '0%';
                         });
@@ -206,3 +206,33 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(document.querySelector('#skills'));
 });
 
+
+// Read More button functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const readMoreBtn = document.getElementById('read-more-btn');
+    const moreContent = document.getElementById('more-content');
+    
+    readMoreBtn.addEventListener('click', function() {
+        if (moreContent.style.display === 'block') {
+            moreContent.style.display = 'none';
+            readMoreBtn.textContent = 'Read More';
+        } else {
+            moreContent.style.display = 'block';
+            readMoreBtn.textContent = 'Read Less';
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            // Remove 'active' class from all links
+            navLinks.forEach(nav => nav.classList.remove('active'));
+
+            // Add 'active' class to the clicked link
+            this.classList.add('active');
+        });
+    });
+});

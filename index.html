@@ -36,12 +36,12 @@
         <section id="home">
             <div class="home-content">
                 <div class="home-text">
-                    <h3>Hello, It's Me</h3>
+                    <h3>Hello, I'm </h3>
                     <h1>W R SAMPATH <span>KUMARA</span></h1>
                     <p>And I'm a <span class="typing"></span></p>
                     <div class="home-description">
-                        <p>I'm a web Designer with extensive experience for over 3 years.</p>
-                        <p>My expertise is to create website designs, Frontend development, and many more...</p>
+                        <p>Welcome to the portfolio of a visionary Computer Science undergraduate at NSBM Green University. I'm a web Designer with extensive experience for over 3 years.</p>
+                        <p>My expertise is to create website designs, Frontend & Backend development, and many more...</p>
                     </div>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/share/16Cgr3SBJp/"><i class="fab fa-facebook-f"></i></a>
@@ -62,36 +62,51 @@
             
         </section>
 
-        <!-- About Section -->
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="images/about.png" alt="Profile Picture">
+       <!-- About Section -->
+<section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+        <div class="about-img">
+            <img src="images/about.png" alt="Profile Picture">
+        </div>
+        <div class="about-text">
+            <h3>Web Developer & Designer</h3>
+            
+            <!-- Initial visible paragraph -->
+            <p>I am a 3rd-year Computer Science undergraduate at <strong>NSBM Green University</strong>, passionate about crafting innovative solutions through technology. As a <strong>Full-Stack Developer</strong>, I specialize in building <strong>modern, responsive, and user-friendly web applications</strong>, seamlessly integrating frontend and backend technologies to deliver impactful projects.</p>
+            
+            <!-- Hidden paragraphs that will be shown on "Read More" click -->
+            <div id="more-content" style="display: none;">
+                <p>With expertise in <strong>React.js, Node.js, Express.js, MongoDB (MERN Stack), PHP, ASP.NET, and C#</strong>, I thrive in creating dynamic applications that enhance user experience and functionality. My technical proficiency extends to <strong>UI/UX design, database management, RESTful APIs, cloud computing, and cybersecurity best practices</strong>.</p>
+
+                <p>Beyond development, I have hands-on experience in <strong>software architecture, project management, and heuristic evaluation</strong>, ensuring that my solutions are not just technically sound but also aligned with user needs. My academic journey is driven by <strong>continuous learning, exploration, and a commitment to excellence</strong>, allowing me to stay at the forefront of evolving technologies.</p>
+
+                <p>From <strong>auction management systems</strong> and <strong>event management platforms</strong> to <strong>smart home applications</strong> and <strong>e-commerce solutions</strong>, I am dedicated to pushing the boundaries of what technology can achieve.</p>
+            </div>
+            
+            <!-- Read More / Read Less button -->
+            <button onclick="toggleReadMore()" id="read-more-btn" style="background-color: transparent; color: #4e73df; border: none; padding: 5px 0; margin: 10px 0; cursor: pointer; font-weight: 600;">Read More</button>
+            
+            <div class="about-details">
+                <div class="detail-item">
+                    <strong>Name:</strong> W.Ravindra Sampath Kumara
                 </div>
-                <div class="about-text">
-                    <h3>Web Developer & Designer</h3>
-                    <p>I am a passionate web developer and designer with a keen eye for detail and a love for creating beautiful, functional websites. My journey in web development started over 3 years ago, and since then I've been constantly learning and improving my skills.</p>
-                    <p>I specialize in creating responsive, user-friendly websites that not only look great but also perform exceptionally well. My goal is to help businesses establish a strong online presence that truly represents their brand.</p>
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <strong>Name:</strong> Sampath Kumara
-                        </div>
-                        <div class="detail-item">
-                            <strong>Email:</strong> sampath@example.com
-                        </div>
-                        <div class="detail-item">
-                            <strong>Age:</strong> 28
-                        </div>
-                        <div class="detail-item">
-                            <strong>From:</strong> Colombo, Sri Lanka
-                        </div>
-                    </div>
-                    <a href="assets/my-cv.pdf" class="btn">Download CV</a>
+                <div class="detail-item">
+                    <strong>Email:</strong> wrskumara0108@gmail.com
+                </div>
+                <div class="detail-item">
+                    <strong>Age:</strong> 25
+                </div>
+                <div class="detail-item">
+                    <strong>From:</strong> Embilipitiya, Sri Lanka
                 </div>
             </div>
-        </section>
+            <a href="assets/my-cv.pdf" class="btn">Download CV</a>
+        </div>
+    </div>
+</section>
 
+        <!-- education section -->
         <section id="education" class="section">
             <div class="container">
                 <h2 class="section-title">My <span class="highlight">Education</span></h2>
@@ -365,11 +380,11 @@
             <div class="projects-container">
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="/api/placeholder/350/200" alt="Project 1">
+                        <img src="images/res.png" alt="Project 1">
                     </div>
                     <div class="project-content">
-                        <h3>E-commerce Website</h3>
-                        <p>A fully responsive e-commerce platform with user authentication, product catalog, shopping cart, and payment gateway integration.</p>
+                        <h3>E-Commerce Restaurant Website</h3>
+                        <p>A simple and responsive restaurant website built using HTML, CSS, JavaScript, PHP, and MySQL. It allows users to view the menu, place online/table orders, and contact the restaurant.</p>
                         <div class="project-links">
                             <a href="#" class="btn">View Project</a>
                             <a href="#" class="btn">Source Code</a>
@@ -378,11 +393,11 @@
                 </div>
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="/api/placeholder/350/200" alt="Project 2">
+                        <img src="images/portfolio.png" alt="Project 2">
                     </div>
                     <div class="project-content">
                         <h3>Portfolio Website</h3>
-                        <p>A modern portfolio website with smooth animations, fully responsive design, and interactive elements to showcase creative work.</p>
+                        <p>This is my personal portfolio website built using HTML, CSS, JavaScript, PHP, and MySQL. It showcases my projects, skills, and contact details. Feel free to reach out to me via email at wrskumara0108@gmail.com.</p>
                         <div class="project-links">
                             <a href="#" class="btn">View Project</a>
                             <a href="#" class="btn">Source Code</a>
@@ -391,11 +406,11 @@
                 </div>
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="/api/placeholder/350/200" alt="Project 3">
+                        <img src="images/lms.png" alt="Project 3">
                     </div>
                     <div class="project-content">
-                        <h3>Blog Website</h3>
-                        <p>A content management system with admin panel, user authentication, comment system, and responsive design for all devices.</p>
+                        <h3>Analytical Dashboard Web Application</h3>
+                        <p>A dynamic dashboard built with React, ASP.NET MVC, and SQL Server, featuring seamless API integration (tested via Swagger) for real-time data visualization and reporting.</p>
                         <div class="project-links">
                             <a href="#" class="btn">View Project</a>
                             <a href="#" class="btn">Source Code</a>
