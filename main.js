@@ -81,41 +81,10 @@ function setupTypingAnimation() {
     });
 }
 
-// Add mouse-over animation for My Skills section cards
-function setupSkillsMouseover() {
-    const skillCards = document.querySelectorAll('.skill-category'); // Target skill cards
 
-    skillCards.forEach(card => {
-        card.addEventListener('mouseover', () => {
-            card.style.transform = 'scale(1.05)'; // Slightly enlarge the card
-            card.style.boxShadow = '0 10px 25px rgba(14, 255, 241, 0.3)'; // Add a glowing shadow
-            card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'; // Smooth transition
-        });
 
-        card.addEventListener('mouseout', () => {
-            card.style.transform = 'scale(1)'; // Reset to original size
-            card.style.boxShadow = 'none'; // Remove the shadow
-        });
-    });
-}
 
-// Add mouse-over animation for Education Section
-function setupEducationMouseover() {
-    const educationItems = document.querySelectorAll('.education-item'); // Target education items
 
-    educationItems.forEach(item => {
-        item.addEventListener('mouseover', () => {
-            item.style.transform = 'scale(1.05)'; // Slightly enlarge the item
-            item.style.boxShadow = '0 10px 25px rgba(14, 255, 241, 0.3)'; // Add a glowing shadow
-            item.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'; // Smooth transition
-        });
-
-        item.addEventListener('mouseout', () => {
-            item.style.transform = 'scale(1)'; // Reset to original size
-            item.style.boxShadow = 'none'; // Remove the shadow
-        });
-    });
-}
 
 // Minimize Header on Scroll
 document.addEventListener('scroll', function () {
@@ -155,52 +124,85 @@ document.addEventListener('DOMContentLoaded', function() {
     setupTypingAnimation();
     setupSkillsMouseover(); // Add mouse-over animation for skills
     setupEducationMouseover(); // Add mouse-over animation for education section
+    //setupEducationCardMouseover(); // Initialize the animation for education cards
+});
 
-    const form = document.getElementById('contactForm');
+// Add mouse-over animation for education cards
+document.addEventListener("DOMContentLoaded", () => {
+    const educationCards = document.querySelectorAll(".education-card");
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent default form submission
+    educationCards.forEach(card => {
+        card.addEventListener("mouseenter", () => {
+            card.style.transform = "scale(1.05)";
+            card.style.boxShadow = "0 10px 25px rgba(14, 255, 241, 0.5)";
+        });
 
-        const formData = new FormData(form);
-
-        // Submit to the first action (FormSubmit.co)
-        fetch('https://formsubmit.co/db8c9156adcb66c69b276febb23b1b65', {
-            method: 'POST',
-            body: formData,
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to submit to FormSubmit.co');
-                }
-                return response.text();
-            })
-            .then(data => {
-                console.log('Submitted to FormSubmit.co:', data);
-            })
-            .catch(error => {
-                console.error('Error submitting to FormSubmit.co:', error);
-            });
-
-        // Submit to the second action (form.php)
-        fetch('form.php', {
-            method: 'POST',
-            body: formData,
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to submit to form.php');
-                }
-                return response.text();
-            })
-            .then(data => {
-                console.log('Submitted to form.php:', data);
-                alert('Your message has been sent successfully!');
-            })
-            .catch(error => {
-                console.error('Error submitting to form.php:', error);
-            });
-
-        // Optionally reset the form after submission
-        form.reset();
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "scale(1)";
+            card.style.boxShadow = "0 5px 15px rgba(0, 0, 0, 0.2)";
+        });
     });
 });
+
+// Adjust section sizes to viewport height
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section");
+
+    function adjustSectionSizes() {
+        const viewportHeight = window.innerHeight;
+
+        sections.forEach(section => {
+            section.style.minHeight = `${viewportHeight}px`; // Set each section to the viewport height
+        });
+    }
+
+    // Adjust sizes on page load
+    adjustSectionSizes();
+
+    // Adjust sizes on window resize
+    window.addEventListener("resize", adjustSectionSizes);
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillCategories = document.querySelectorAll('.skill-category');
+                skillCategories.forEach((category, index) => {
+                    setTimeout(() => {
+                        category.classList.add('animate-in');
+                        const progressBars = category.querySelectorAll('.skill-progress');
+                        progressBars.forEach(bar => {
+                            // Get the class name that contains progress info
+                            const progressClass = bar.classList[1];
+                            
+                            // Set width based on class name
+                            if (progressClass.includes('javascript')) bar.style.width = '85%';
+                            else if (progressClass.includes('java-progress')) bar.style.width = '80%';
+                            else if (progressClass.includes('php')) bar.style.width = '90%';
+                            else if (progressClass.includes('python')) bar.style.width = '80%';
+                            // Frameworks
+                            else if (progressClass.includes('reactjs')) bar.style.width = '85%';
+                            else if (progressClass.includes('nodejs')) bar.style.width = '80%';
+                            else if (progressClass.includes('laravel')) bar.style.width = '70%';
+                            else if (progressClass.includes('bootstrap')) bar.style.width = '80%';
+                            else if (progressClass.includes('expressjs')) bar.style.width = '75%';
+                            // Professional Skills
+                            else if (progressClass.includes('problem-solving')) bar.style.width = '70%';
+                            else if (progressClass.includes('communication')) bar.style.width = '85%';
+                            else if (progressClass.includes('leadership')) bar.style.width = '85%';
+                            else if (progressClass.includes('project-management')) bar.style.width = '80%';
+                            else if (progressClass.includes('time-management')) bar.style.width = '85%';
+                            else bar.style.width = '0%';
+                        });
+                    }, index * 200);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(document.querySelector('#skills'));
+});
+
